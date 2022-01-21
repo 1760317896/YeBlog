@@ -1,0 +1,29 @@
+# - class_name: 技术外链
+#   class_desc: 须知：
+#               欢迎申请加入本站友链！在这里分享其它牛人博客！
+#               若要加入本站外链，欢迎在下方评论网站名称，网站地址以及网站简介。(各博主div样式努力开发中...)
+#   link_list:
+#     - name: JerryC
+#       link: https://jerryc.me/
+#       avatar: https://jerryc.me/image/avatar.png
+#       descr: 今日事,今日毕
+#     - name: Hexo
+#       link: https://hexo.io/zh-tw/
+#       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+#       descr: 快速、简单且强大的网志框架
+
+# - class_name: 资源分享站点
+#   class_desc: 外面风景精彩，愿你一路大笑开怀
+#   link_list:
+#     - name: 吖～是星星
+#       link: https://multiplystar.github.io/
+#       avatar: https://multiplystar.github.io/images/avatar/avatar.jpg
+#       descr: 心中有光的人,终会冲破一切黑暗和荆棘
+#     - name: CSDN
+#       link: https://blog.csdn.net/m0_62145574?spm=1001.2100.3001.5343
+#       avatar: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fis5-ssl.mzstatic.com%2Fimage%2Fthumb%2FPurple123%2Fv4%2Fb3%2Fd8%2F7c%2Fb3d87c33-eb0e-3014-2a3b-d559081cb6b9%2FAppIcon-1x_U007emarketing-0-7-0-0-sRGB-85-220.png%2F320x0w.png&refer=http%3A%2F%2Fis5-ssl.mzstatic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1643942447&t=878176553487ad4a724f33c12b0c7cab
+#       descr: 此项目在GitHub开源
+#     - name: Twitter
+#       link: https://twitter.com/
+#       avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
+#       descr: 社交分享平台
