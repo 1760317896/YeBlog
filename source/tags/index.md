@@ -23,14 +23,14 @@ Date By：2021.12.20
 * [来必力](http://livere.com/)：百度了一下，韩国的，可以访问官网，看不懂韩文，注册页面点出来不晓得怎搞了，再见！
 
 
-#### 2. 百度统计优化
+### 2. 百度统计优化
 
 除了想要增加一个博客的评论功能，当然还要添加博客的访问数据分析啦，博客被多少人访问，打开次数，访问时间全部交给了百度统计，在百度统计官网注册了一个账号，绑定了我的博客网址，获取到一段代码，代码含有id，编辑`主题配置文件`，修改字段 baidu_analytics 字段值设置成自己的百度统计脚本的id，已经获取了id，配置到了站点配置文件里面，等上传看效果。
 
 
 ### 3. 自定义本站底部版权申明
 
-我放弃了。
+暂时放弃了。
 
 ### 4. theme大更新，由NexT改为Butterflt
 
@@ -73,10 +73,10 @@ $ npm install --save hexo-tag-aplayer
 
 ``` javascript
 custom_js:
-  - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js  #/APlayer#/APlayer依赖
-  - //cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js  #/APlayer依赖
+  - cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js  #/APlayer#/APlayer依赖
+  - cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js  #/APlayer依赖
 custom_css:
-  - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css   #/APlayer依赖
+  - cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css   #/APlayer依赖
 ```
 
 3. 然后在网站的根目录下的配置文件_config.yml中填上以下代码：
@@ -195,4 +195,45 @@ $ hexo bangumi -d
 ### 21. 导航栏变更
 将技术外链跟资源分享页面合并，新增关于本站页面
 
+### 22.添加pjax吸底音乐系统
+需要安装这个插件：hexo-tag-aplayer
+在inject-buttom中添加
+```xml
+- <div class="aplayer no-destroy" data-id="5011504991" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div>
+```
+参数解释
 
+| option | default | description |
+| :-----| :----: | :----: |
+| data-id | require | song id / playlist id / album id / search keyword |
+| data-server | require | music platform: netease, tencent, kugou, xiami, baidu | 
+|data-type | require | song, playlist, album, search, artist |
+| data-fixed | false | enable fixed mode |
+| data-mini | false | enable mini mode |
+| data-autoplay | false | audio autoplay |
+| data-theme | #2980b9 | main color |
+| data-loop | all | player play order, values: 'list', 'random' |
+| data-order | list | player play order, values: 'list', 'random' |
+
+### 23.安装aplayer
+* 安装
+`npm install aplayer --save`
+* 使用
+`yarn add aplayer`
+
+### 完善音乐页面
+生成项目发现有一个warming跟error
+1. 原因是没在hexo配置文件下加入以下配置:
+```xml
+aplayer:  
+  meting: true  
+  asset_inject: false
+```
+2. 主题配置文件_config.yml中custom下引入插件依赖的js和css。
+```xml
+custom_js:
+  - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js  #/APlayer#/APlayer依赖
+  - //cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js  #/APlayer依赖
+custom_css:
+  - //cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css   #/APlayer依赖s
+```

@@ -117,3 +117,7 @@ deploy:
 #   type: git
 #   repo: git@123.57.163.217:/var/repo/hexoBlog.git
 #   branch: master
+# aplayer
+aplayer:  
+  meting: true  
+  asset_inject: false

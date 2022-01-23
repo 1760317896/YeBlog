@@ -14,10 +14,26 @@ menu:
   #List ||fas fa-list:
   音乐: /music/ || fas fa-music
   #Movie: /movies/ || fas fa-video
-  外链: /link/ || fas fa-link
-    # 技术外链: /link/ || fas fas fa-link
-    # 资源分享: /share/ || fas fa-folder-open
-  分享: /share/ || fas fa-folder-open
+  外链 ||fas fa-list:
+      技术友链: /link/ || fas fas fa-link
+      资源分享: /share/ || fas fa-folder-open
+      关于本站: /about/ || fas fa-heart
+  文档 || fas fa-folder-open:
+      Git中文教程: https://git-scm.com/book/zh/v2
+      Nginx中文文档: https://www.nginx.cn/doc/index.html
+      Mybatis中文文档: https://mybatis.org/mybatis-3/zh/index.html
+      Nodejs中文文档: http://nodejs.cn/learn
+      Spring中文文档: https://www.springcloud.cc/spring-reference.html
+      Java8官方文档: https://docs.oracle.com/javase/8/docs/api/index.html
+      Maven官方文档: https://maven.apache.org/guides/
+      Tomcat8官方文档: https://tomcat.apache.org/tomcat-8.0-doc/index.html
+      Spring Boot官方文档: https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
+      Spring Cloud官方文档: https://spring.io/projects/spring-cloud
+      Docker官方文档: https://docs.docker.com/get-started/
+      Thymeleaf官方文档: https://www.thymeleaf.org/documentation.html
+      Vue.js中文文档: https://cn.vuejs.org/v2/guide/
+      React.js官方文档: https://reactjs.org/docs/getting-started.html
+    
   # 关于本站: /about/ || fas fa-heart
 
 # Hide the child menu items in mobile sidebar
@@ -785,14 +801,14 @@ note:
 # It may contain bugs and unstable, give feedback when you find the bugs.
 # https://github.com/MoOx/pjax
 pjax:
-  enable: false
+  enable: true
   exclude:
     # - xxxx
     # - xxxx
 
 # Inject the css and script (aplayer/meting)
 aplayerInject:
-  enable: false
+  enable: true
   per_page: true
 
 # Snackbar (Toast Notification 彈窗)
@@ -853,6 +869,7 @@ inject:
    # 阿里图标
    #- <link rel="stylesheet" href="/css/iconfont.css">
   bottom:
+   - <div class="aplayer no-destroy" data-id="5011504991" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div>
    # 折叠
    #- <script src="/js/classify.js"></script>
    # 背景
