@@ -1,0 +1,469 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>学习Git版本控制笔记 | Learning</title><meta name="keywords" content="笔记,Git"><meta name="author" content="桥豆麻袋"><meta name="copyright" content="桥豆麻袋"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、Git工作流 四大板块(1)工作目录存放我们正在写的代码 (2)暂存区暂时保存待提交的内容 (3)本地仓库位于我们电脑上的一个版本控制仓库 (4)远程仓库位于服务器上的版本控制仓库 二、创建本地仓库2.1初始化为本地仓库1git init   #可以创建多个本地仓库 2.2查看当前仓库状态1git status     #查看当前，如果有未追踪的文件则需要追踪 2.3添加为追踪文件1git a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Git版本控制笔记">
+<meta property="og:url" content="http://1760317896.github.io/2022/01/22/%E5%AD%A6%E4%B9%A0Git%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Learning">
+<meta property="og:description" content="一、Git工作流 四大板块(1)工作目录存放我们正在写的代码 (2)暂存区暂时保存待提交的内容 (3)本地仓库位于我们电脑上的一个版本控制仓库 (4)远程仓库位于服务器上的版本控制仓库 二、创建本地仓库2.1初始化为本地仓库1git init   #可以创建多个本地仓库 2.2查看当前仓库状态1git status     #查看当前，如果有未追踪的文件则需要追踪 2.3添加为追踪文件1git a">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/01/16/IfxEHiWK4sX2zm7.png">
+<meta property="article:published_time" content="2022-01-22T04:04:44.000Z">
+<meta property="article:modified_time" content="2022-01-22T06:06:08.518Z">
+<meta property="article:author" content="桥豆麻袋">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/01/16/IfxEHiWK4sX2zm7.png"><link rel="shortcut icon" href="/img/2.png"><link rel="canonical" href="http://1760317896.github.io/2022/01/22/%E5%AD%A6%E4%B9%A0Git%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d80172d8afdb135c62d651b4231cd1fe";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '学习Git版本控制笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-22 14:06:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/VolantisTags.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 优化</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 外链</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fas fa-link"></i><span> 技术友链</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fas fa-folder-open"></i><span> 资源分享</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2"><span> Git中文教程</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.nginx.cn/doc/index.html"><span> Nginx中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/index.html"><span> Mybatis中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://nodejs.cn/learn"><span> Nodejs中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.springcloud.cc/spring-reference.html"><span> Spring中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/index.html"><span> Java8官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://maven.apache.org/guides/"><span> Maven官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-8.0-doc/index.html"><span> Tomcat8官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/"><span> Spring Boot官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud"><span> Spring Cloud官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.docker.com/get-started/"><span> Docker官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.thymeleaf.org/documentation.html"><span> Thymeleaf官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/"><span> Vue.js中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://reactjs.org/docs/getting-started.html"><span> React.js官方文档</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/20.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Learning</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 优化</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 外链</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fas fa-link"></i><span> 技术友链</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fas fa-folder-open"></i><span> 资源分享</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2"><span> Git中文教程</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.nginx.cn/doc/index.html"><span> Nginx中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/index.html"><span> Mybatis中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://nodejs.cn/learn"><span> Nodejs中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.springcloud.cc/spring-reference.html"><span> Spring中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/index.html"><span> Java8官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://maven.apache.org/guides/"><span> Maven官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-8.0-doc/index.html"><span> Tomcat8官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/"><span> Spring Boot官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud"><span> Spring Cloud官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.docker.com/get-started/"><span> Docker官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.thymeleaf.org/documentation.html"><span> Thymeleaf官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/"><span> Vue.js中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://reactjs.org/docs/getting-started.html"><span> React.js官方文档</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="he-plugin-simple"></div><div id="post-info"><h1 class="post-title">学习Git版本控制笔记<a class="post-edit-link" href="htps://1760317896.github.io_posts/学习Git笔记.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-22T04:04:44.000Z" title="发表于 2022-01-22 12:04:44">2022-01-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-22T06:06:08.518Z" title="更新于 2022-01-22 14:06:08">2022-01-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="学习Git版本控制笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/01/22/%E5%AD%A6%E4%B9%A0Git%E7%AC%94%E8%AE%B0/#post-comment"><span id="twikoo-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一、Git工作流"><a href="#一、Git工作流" class="headerlink" title="一、Git工作流"></a>一、Git工作流</h2><p><img src="https://s2.loli.net/2022/01/22/VWYkdFjNil5A6L1.jpg" alt="1.jpg"></p>
+<h3 id="四大板块"><a href="#四大板块" class="headerlink" title="四大板块"></a>四大板块</h3><h4 id="1-工作目录"><a href="#1-工作目录" class="headerlink" title="(1)工作目录"></a>(1)工作目录</h4><p>存放我们正在写的代码</p>
+<h4 id="2-暂存区"><a href="#2-暂存区" class="headerlink" title="(2)暂存区"></a>(2)暂存区</h4><p>暂时保存待提交的内容</p>
+<h4 id="3-本地仓库"><a href="#3-本地仓库" class="headerlink" title="(3)本地仓库"></a>(3)本地仓库</h4><p>位于我们电脑上的一个版本控制仓库</p>
+<h4 id="4-远程仓库"><a href="#4-远程仓库" class="headerlink" title="(4)远程仓库"></a>(4)远程仓库</h4><p>位于服务器上的版本控制仓库</p>
+<h2 id="二、创建本地仓库"><a href="#二、创建本地仓库" class="headerlink" title="二、创建本地仓库"></a>二、创建本地仓库</h2><h3 id="2-1初始化为本地仓库"><a href="#2-1初始化为本地仓库" class="headerlink" title="2.1初始化为本地仓库"></a>2.1初始化为本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init   <span class="comment">#可以创建多个本地仓库</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2查看当前仓库状态"><a href="#2-2查看当前仓库状态" class="headerlink" title="2.2查看当前仓库状态"></a>2.2查看当前仓库状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status     <span class="comment">#查看当前，如果有未追踪的文件则需要追踪</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3添加为追踪文件"><a href="#2-3添加为追踪文件" class="headerlink" title="2.3添加为追踪文件"></a>2.3添加为追踪文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add text.txt      <span class="comment">#添加完成就放到了暂存区等待提交</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-4这提交到本地仓库"><a href="#2-4这提交到本地仓库" class="headerlink" title="2.4这提交到本地仓库"></a>2.4这提交到本地仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&#x27;描述&#x27;</span>    <span class="comment">#这个版本就提交到git的本地仓库了</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-5修改文件内容提交"><a href="#2-5修改文件内容提交" class="headerlink" title="2.5修改文件内容提交"></a>2.5修改文件内容提交</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m <span class="string">&#x27;备注&#x27;</span>   <span class="comment">#如果修改了已经提交过的文件内容，再次提交就使用这个命令</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-6查看提交日志"><a href="#2-6查看提交日志" class="headerlink" title="2.6查看提交日志"></a>2.6查看提交日志</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span>    <span class="comment">#可以查看提交日志，谁在什么时候提交的，也能查看提交ID</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-7查看一条日志"><a href="#2-7查看一条日志" class="headerlink" title="2.7查看一条日志"></a>2.7查看一条日志</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --all --oneline --graph   <span class="comment">#图形化查看一条日志的所有操作</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-8改变初始化提交"><a href="#2-8改变初始化提交" class="headerlink" title="2.8改变初始化提交"></a>2.8改变初始化提交</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard conmmitID   <span class="comment">#改变初始化提交为哪一次提交的版本</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-9查看所有分支的所有操作记录"><a href="#2-9查看所有分支的所有操作记录" class="headerlink" title="2.9查看所有分支的所有操作记录"></a>2.9查看所有分支的所有操作记录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog       <span class="comment">#查看所有分支的所有操作记录 </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、新建分支"><a href="#三、新建分支" class="headerlink" title="三、新建分支"></a>三、新建分支</h2><h3 id="3-1查看当前所在分支"><a href="#3-1查看当前所在分支" class="headerlink" title="3.1查看当前所在分支"></a>3.1查看当前所在分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<h3 id="3-2创建新的分支"><a href="#3-2创建新的分支" class="headerlink" title="3.2创建新的分支"></a>3.2创建新的分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名 </span><br></pre></td></tr></table></figure>
+<h3 id="3-3删除分支"><a href="#3-3删除分支" class="headerlink" title="3.3删除分支"></a>3.3删除分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d 分支名</span><br></pre></td></tr></table></figure>
+<h3 id="3-4切换分支"><a href="#3-4切换分支" class="headerlink" title="3.4切换分支"></a>3.4切换分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名   </span><br></pre></td></tr></table></figure>
+
+<h2 id="四、合并分支"><a href="#四、合并分支" class="headerlink" title="四、合并分支"></a>四、合并分支</h2><p>我们也可以将两个分支更新的内容最终合并到同一个分支上<br>我们先切换回主分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+<p>然后合并</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名   </span><br></pre></td></tr></table></figure>
+<p>如果合并有冲突，查看哪里发生了冲突</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff  </span><br></pre></td></tr></table></figure>
+
+<h2 id="五、变基分支"><a href="#五、变基分支" class="headerlink" title="五、变基分支"></a>五、变基分支</h2><p>除了直接合并分支，我们还可以进行变基操作，它跟合并不同，合并是分支回到主干的过程，而变基是直接修改分支开始的位置，比如我们希望将text变基到master上，那么test会将分支起点移动到master最后一次提交位置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
+<p>变基后，test分支相当于同步了此前master分支的全部提交</p>
+<h2 id="六、优选"><a href="#六、优选" class="headerlink" title="六、优选"></a>六、优选</h2><p>我们还可以选择其它分支上的提交作用于当前分支，这种操作称为cherrypick</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout test   #先切换到test分支</span><br><span class="line">git cherry-pick &lt;commit ID&gt;   #单独合并一个提交</span><br></pre></td></tr></table></figure>
+<p>这里我们在master分支上创建一个新的文件，提交此次更新，接着通过cherry-pick的方式将此次更新作用于test分支上。</p>
+<h2 id="七、使用IDEA版本控制"><a href="#七、使用IDEA版本控制" class="headerlink" title="七、使用IDEA版本控制"></a>七、使用IDEA版本控制</h2><p>虽然前面学习了git命令行的使用方法，但是没有一个图形化界面，始终会感觉很抽象，所有再继续学习使用IDEA的版本控制</p>
+<p>打开IDEA后，找到版本控制模块，我们直接点击创建本地仓库，它会自动将当前项目的根目录作为我们的本地仓库，当我们编写的所有代码和项目目录下其它文件都可以进行版本控制</p>
+<p>我发现所有项目中正在编写的类文件全部变红了，也就是处于未追踪状态，接着我进行第一次初始化提交，提交之后我可以在下方看到所有本地仓库提交记录</p>
+<p>接着我来整合一下Web环境，创建新的类之后，IDEA会提示我们是否将文件添加Git，也就是是否放入暂存区并开启追踪，我们可以直接对比两次代码的相同和不同之处。</p>
+<h2 id="八、远程仓库"><a href="#八、远程仓库" class="headerlink" title="八、远程仓库"></a>八、远程仓库</h2><h3 id="8-1-远程仓库概述"><a href="#8-1-远程仓库概述" class="headerlink" title="8.1 远程仓库概述"></a>8.1 远程仓库概述</h3><p>远程仓库实绩上就是位于服务器上的仓库，它能在远端保存我们的版本历史，并且实现多人同时合作编写项目，每个人都能够同步他人的版本，能够看到他人的版本提交，相当于将我们的代码放在服务器上进行托管。</p>
+<h3 id="8-2-Github和Bitbacket"><a href="#8-2-Github和Bitbacket" class="headerlink" title="8.2 Github和Bitbacket"></a>8.2 Github和Bitbacket</h3><p>托管 Git 仓库最受欢迎的网站是 GitHub 和Bitbucket。：GitHub 为开源项目提供无限量的免费仓库,但私有仓库收费;而 Bitbucket 提供了无限量的私有仓库,仅当协作者超过一定数量时才收费。选择哪个网站,取决于具体的需求。在学习ruby on rails的教程中作者将代码托管在了Bitbucket上面，所以我也申请了一个账号试试。觉得用户体验还是很棒的。跟github很像，界面也十分友好。这是一个免费托管私人仓库的好地方。</p>
+<h3 id="8-3-公有和私有远程仓库"><a href="#8-3-公有和私有远程仓库" class="headerlink" title="8.3 公有和私有远程仓库"></a>8.3 公有和私有远程仓库</h3><p>远程仓库有公有和私有的，公有的远程仓库有GitHub，码云，Coding等，他们都是对外开放的，我们注册账号之后就可以使用远程仓库进行版本控制，其中最大的就是GitHub，但是它服务器在国外，国内链接可能会有一点卡。私有一般是GitLab这种自主搭建的远程私服，在公司中比较常用，我们公司的项目就是托管在GitLab上，使用局域网搭建的一个远程仓库，它只对公司内部开放，不对外开放。</p>
+<h3 id="8-9-将自己的项目conmmit到本地仓库以后push到远程仓库"><a href="#8-9-将自己的项目conmmit到本地仓库以后push到远程仓库" class="headerlink" title="8.9 将自己的项目conmmit到本地仓库以后push到远程仓库"></a>8.9 将自己的项目conmmit到本地仓库以后push到远程仓库</h3><h3 id="1、完成本地提交"><a href="#1、完成本地提交" class="headerlink" title="1、完成本地提交"></a>1、完成本地提交</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m <span class="string">&#x27;提交描述&#x27;</span></span><br><span class="line">git <span class="built_in">log</span> --oneline --all --graph</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、让本地仓库知道远程仓库的存在-本地仓库绑定远程仓库"><a href="#2、让本地仓库知道远程仓库的存在-本地仓库绑定远程仓库" class="headerlink" title="2、让本地仓库知道远程仓库的存在(本地仓库绑定远程仓库)"></a>2、让本地仓库知道远程仓库的存在(本地仓库绑定远程仓库)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https地址  </span><br></pre></td></tr></table></figure>
+
+<h3 id="3、push到远程仓库"><a href="#3、push到远程仓库" class="headerlink" title="3、push到远程仓库"></a>3、push到远程仓库</h3><p>语法格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push 远程仓库分支 本地分支名称</span><br></pre></td></tr></table></figure>
+<p>具体命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin maser</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、本地绑定远程"><a href="#4、本地绑定远程" class="headerlink" title="4、本地绑定远程"></a>4、本地绑定远程</h3><p>我们可以将远端和本地的分支进行绑定，绑定后就不需要指定分支名称了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git Push--set-upstream yecode master:master</span><br><span class="line">git push yecode</span><br></pre></td></tr></table></figure>
+<p>在一个本地仓库对应一个远程仓库的下，远程仓库基本上就是纯粹的代码托管了，类似于云盘那种感觉，存你的代码。</p>
+<h2 id="九、克隆项目"><a href="#九、克隆项目" class="headerlink" title="九、克隆项目"></a>九、克隆项目</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https地址</span><br></pre></td></tr></table></figure>
+
+<h2 id="十、抓取、拉取和冲突解决"><a href="#十、抓取、拉取和冲突解决" class="headerlink" title="十、抓取、拉取和冲突解决"></a>十、抓取、拉取和冲突解决</h2><p>比如程序员A完成了他的模块，那么他就可以提交代码并推送到远程仓库，这时程序员B也要开始写代码了，由于远程仓库有其他程序员提交的记录，因此程序员B的本地仓库就和远程仓库不一致，就需要先进行pull操作，获取远程仓库最新的提交：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git fetch   <span class="comment">#抓取：只获取但是不会合并远端分支，后面需要我们手动合并并提交</span></span><br><span class="line">git pull     <span class="comment">#拉取：获取+合并</span></span><br></pre></td></tr></table></figure>
+
+
+<p>如果存在不协调的地方，比如本地有两个仓库，一个仓库去修改hello.txt并直接提交，另一个仓库也修改hexllo.txt并直接提交，会报错</p>
+<p>一旦一一个本地仓库推送了代码，那么另一个本地仓库的推送会被拒绝，原因是当前文件已经被其他的推送给修改了，我们这边相当于是另一个版本，和之前两个分支合并一样，产生了冲突，因此我们只能去解决冲突问题。</p>
+<p>如果远程仓库中的提交和本地仓库的提交没有去编写同一个文件，那么就可以直接拉取：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull 远程仓库</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">桥豆麻袋</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://1760317896.github.io/2022/01/22/%E5%AD%A6%E4%B9%A0Git%E7%AC%94%E8%AE%B0/">http://1760317896.github.io/2022/01/22/学习Git笔记/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://1760317896.github.io" target="_blank">Learning</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><a class="post-meta__tags" href="/tags/Git/">Git</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/01/16/IfxEHiWK4sX2zm7.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> reward</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2021/12/26/LPdHnvUkeiKZhMs.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2021/12/26/LPdHnvUkeiKZhMs.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2021/12/26/lOvjLq7Ed9FHRw4.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2021/12/26/lOvjLq7Ed9FHRw4.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/01/23/Layui-%E6%A8%A1%E5%9D%97%E5%8C%96%E5%89%8D%E7%AB%AFUI%E6%A1%86%E6%9E%B6/"><img class="prev-cover" src="https://s2.loli.net/2022/01/20/O8uDMUmjwfIpYWz.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Layui-模块化前端UI框架</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/19/Spring-Boot%E6%95%B4%E5%90%88Mybatis/"><img class="next-cover" src="https://s2.loli.net/2022/01/20/3c1vK7ICigMSzdF.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spring Boot整合Mybatis</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">桥豆麻袋</div><div class="author-info__description">You have to put a grape in your mouth to call it sour</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1760317896/YeBlog"><i class="fab fa-github"></i><span>To GitHub(网站开源)</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">一路走，一路学。面朝大海，望眼欲穿。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Git%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">1.</span> <span class="toc-text">一、Git工作流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E5%A4%A7%E6%9D%BF%E5%9D%97"><span class="toc-number">1.1.</span> <span class="toc-text">四大板块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">(1)工作目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9A%82%E5%AD%98%E5%8C%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">(2)暂存区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.3.</span> <span class="toc-text">(3)本地仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">1.1.4.</span> <span class="toc-text">(4)远程仓库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">二、创建本地仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BA%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-number">2.1.</span> <span class="toc-text">2.1初始化为本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E4%BB%93%E5%BA%93%E7%8A%B6%E6%80%81"><span class="toc-number">2.2.</span> <span class="toc-text">2.2查看当前仓库状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3%E6%B7%BB%E5%8A%A0%E4%B8%BA%E8%BF%BD%E8%B8%AA%E6%96%87%E4%BB%B6"><span class="toc-number">2.3.</span> <span class="toc-text">2.3添加为追踪文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4%E8%BF%99%E6%8F%90%E4%BA%A4%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93"><span class="toc-number">2.4.</span> <span class="toc-text">2.4这提交到本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%8F%90%E4%BA%A4"><span class="toc-number">2.5.</span> <span class="toc-text">2.5修改文件内容提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E6%97%A5%E5%BF%97"><span class="toc-number">2.6.</span> <span class="toc-text">2.6查看提交日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7%E6%9F%A5%E7%9C%8B%E4%B8%80%E6%9D%A1%E6%97%A5%E5%BF%97"><span class="toc-number">2.7.</span> <span class="toc-text">2.7查看一条日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8%E6%94%B9%E5%8F%98%E5%88%9D%E5%A7%8B%E5%8C%96%E6%8F%90%E4%BA%A4"><span class="toc-number">2.8.</span> <span class="toc-text">2.8改变初始化提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E5%88%86%E6%94%AF%E7%9A%84%E6%89%80%E6%9C%89%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95"><span class="toc-number">2.9.</span> <span class="toc-text">2.9查看所有分支的所有操作记录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%96%B0%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-number">3.</span> <span class="toc-text">三、新建分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E6%89%80%E5%9C%A8%E5%88%86%E6%94%AF"><span class="toc-number">3.1.</span> <span class="toc-text">3.1查看当前所在分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E5%88%86%E6%94%AF"><span class="toc-number">3.2.</span> <span class="toc-text">3.2创建新的分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3%E5%88%A0%E9%99%A4%E5%88%86%E6%94%AF"><span class="toc-number">3.3.</span> <span class="toc-text">3.3删除分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-number">3.4.</span> <span class="toc-text">3.4切换分支</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-number">4.</span> <span class="toc-text">四、合并分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%8F%98%E5%9F%BA%E5%88%86%E6%94%AF"><span class="toc-number">5.</span> <span class="toc-text">五、变基分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%BC%98%E9%80%89"><span class="toc-number">6.</span> <span class="toc-text">六、优选</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E4%BD%BF%E7%94%A8IDEA%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">7.</span> <span class="toc-text">七、使用IDEA版本控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">8.</span> <span class="toc-text">八、远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%A6%82%E8%BF%B0"><span class="toc-number">8.1.</span> <span class="toc-text">8.1 远程仓库概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-Github%E5%92%8CBitbacket"><span class="toc-number">8.2.</span> <span class="toc-text">8.2 Github和Bitbacket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-3-%E5%85%AC%E6%9C%89%E5%92%8C%E7%A7%81%E6%9C%89%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">8.3.</span> <span class="toc-text">8.3 公有和私有远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-9-%E5%B0%86%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A1%B9%E7%9B%AEconmmit%E5%88%B0%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%BB%A5%E5%90%8Epush%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">8.4.</span> <span class="toc-text">8.9 将自己的项目conmmit到本地仓库以后push到远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AE%8C%E6%88%90%E6%9C%AC%E5%9C%B0%E6%8F%90%E4%BA%A4"><span class="toc-number">8.5.</span> <span class="toc-text">1、完成本地提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%AE%A9%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E7%9F%A5%E9%81%93%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E5%AD%98%E5%9C%A8-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E7%BB%91%E5%AE%9A%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">8.6.</span> <span class="toc-text">2、让本地仓库知道远程仓库的存在(本地仓库绑定远程仓库)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">8.7.</span> <span class="toc-text">3、push到远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%9C%AC%E5%9C%B0%E7%BB%91%E5%AE%9A%E8%BF%9C%E7%A8%8B"><span class="toc-number">8.8.</span> <span class="toc-text">4、本地绑定远程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%85%8B%E9%9A%86%E9%A1%B9%E7%9B%AE"><span class="toc-number">9.</span> <span class="toc-text">九、克隆项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E6%8A%93%E5%8F%96%E3%80%81%E6%8B%89%E5%8F%96%E5%92%8C%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3"><span class="toc-number">10.</span> <span class="toc-text">十、抓取、拉取和冲突解决</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/20.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 桥豆麻袋</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'twikoo-0gxault3cb1198ad',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'twikoo-0gxault3cb1198ad',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'twikoo-0gxault3cb1198ad',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="5011504991" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="/js/VolantisTags.js"></script><script src="/js/lun.js"></script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script async src="/js/weather.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="//code.tidio.co/hgk1vot3vbzasaecdzckgcanjhcm0xu9.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
