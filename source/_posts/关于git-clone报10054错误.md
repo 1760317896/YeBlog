@@ -1,7 +1,9 @@
 ---
-title: 关于git_clone报10054错误
+title: 关于git clone报10054错误
 date: 2022-01-16 12:58:31
-tags: 记录
+tags: 
+- 记录
+- Git
 cover: https://s2.loli.net/2022/01/16/IfxEHiWK4sX2zm7.png
 top_img: /img/20.jpg
 ---

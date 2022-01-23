@@ -5,7 +5,7 @@ type: "about"
 top_img: https://s2.loli.net/2021/12/29/HUiyLnJDzF2hKuo.jpg
 ---
 
-> 博客的优化任重道远，一口吃不成胖子，有时间就优化一下，完善页面，将优化时间以及优化的相关内容记录下来，做个笔记吧，要不然过一段时间，又不晓得在网站搞了写啥，算是一个循序渐进的过程！
+> 博客的优化任重道远，一口吃不成胖子，有时间就优化一下，完善页面，将优化时间以及优化的相关内容记录下来，做个笔记吧，算是一个循序渐进的过程！
 >
 
 Date By：2021.12.20
@@ -34,7 +34,7 @@ Date By：2021.12.20
 
 ### 4. theme大更新，由NexT改为Butterflt
 
-今天又发现了一个好玩的：`butterfly`,hexo-theme-butterfly是基于Molunerfinn的hexo-theme-melody的基础上进行开发的。今天晚上搞这玩意又一晚上了，next主题的配置文件，三方插件太多了，有些功能还挺麻烦的，花了大心思，主要是排版不是很喜欢，现在好了，next也不配了，配置文件待会上传到github上吧，改的挺多了，之后要是再想用NexT配一下hexo的`_config.yml`文件就行了。把butterfly配置好了以后一下子就舒服多了，但是还有很多样式没实现，scc/js文件没引入，大概的排版算是出来了。挺喜欢butterfly风格的。
+今天又发现了一个好看的：`butterfly`,hexo-theme-butterfly是基于Molunerfinn的hexo-theme-melody的基础上进行开发的。今天晚上搞这玩意又一晚上了，next主题的配置文件，三方插件太多了，有些功能还挺麻烦的，花了大心思，主要是排版不是很喜欢，现在好了，next也不配了，配置文件待会上传到github上吧，改的挺多了，之后要是再想用NexT配一下hexo的`_config.yml`文件就行了。把butterfly配置好了以后一下子就舒服多了，但是还有很多样式没实现，scc/js文件没引入，大概的排版算是出来了。挺喜欢butterfly风格的。
 
 * 很多设置优化都单独封装在yml配置了（配置很方便，加载很nice，主题更新也方便）。
 

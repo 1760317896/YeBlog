@@ -1,5 +1,5 @@
 ---
-title: Spring_Boot整合Mybatis
+title: Spring Boot整合Mybatis
 date: 2022-01-19 09:33:22
 tags:
 cover: https://s2.loli.net/2022/01/20/3c1vK7ICigMSzdF.png
