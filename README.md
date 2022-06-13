@@ -6,7 +6,7 @@
 
 ## This is a personal blog project based on Hexo+ Github
 
-### uses Butterfly as the Theme. The blog has a detailed tutorial on how to build, you can visit it. Address: https://1760317896.github.io
+### uses Butterfly as the Theme. The blog has a detailed tutorial on how to build, you can visit it. Address: skkya.cn
 
 
 ### About this site
