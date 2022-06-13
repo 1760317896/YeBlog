@@ -1,0 +1,703 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thymeleaf模板引擎 | 是可可呀~|个人博客</title><meta name="keywords" content="笔记"><meta name="author" content="桥豆麻袋"><meta name="copyright" content="桥豆麻袋"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Thymeleaf 是一个服务器端 Java 模板引擎，能够处理 HTML、XML、CSS、JAVASCRIPT 等模板文件。Thymeleaf 模板可以直接当作静态原型来使用，它主要目标是为开发者的开发工作流程带来优雅的自然模板，也是 Java 服务器端 HTML5 开发的理想选择。  1. 创建模板文件创建一个 HTML 模板文件：12345678910&lt;!DOCTYPE HTML&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thymeleaf模板引擎">
+<meta property="og:url" content="http://1760317896.github.io/2022/01/27/Thymeleaf%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/index.html">
+<meta property="og:site_name" content="是可可呀~|个人博客">
+<meta property="og:description" content="Thymeleaf 是一个服务器端 Java 模板引擎，能够处理 HTML、XML、CSS、JAVASCRIPT 等模板文件。Thymeleaf 模板可以直接当作静态原型来使用，它主要目标是为开发者的开发工作流程带来优雅的自然模板，也是 Java 服务器端 HTML5 开发的理想选择。  1. 创建模板文件创建一个 HTML 模板文件：12345678910&lt;!DOCTYPE HTML&amp;g">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2021/12/23/oU4FeXjCplusZa2.jpg">
+<meta property="article:published_time" content="2022-01-27T04:37:29.000Z">
+<meta property="article:modified_time" content="2022-06-13T07:53:28.516Z">
+<meta property="article:author" content="桥豆麻袋">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2021/12/23/oU4FeXjCplusZa2.jpg"><link rel="shortcut icon" href="/img/2.png"><link rel="canonical" href="http://1760317896.github.io/2022/01/27/Thymeleaf%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d80172d8afdb135c62d651b4231cd1fe";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Thymeleaf模板引擎',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-13 15:53:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/VolantisTags.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 优化</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 外链</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fas fa-link"></i><span> 技术友链</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fas fa-folder-open"></i><span> 资源分享</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2"><span> Git中文教程</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.nginx.cn/doc/index.html"><span> Nginx中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/index.html"><span> Mybatis中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://nodejs.cn/learn"><span> Nodejs中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.springcloud.cc/spring-reference.html"><span> Spring中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/index.html"><span> Java8官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://maven.apache.org/guides/"><span> Maven官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-8.0-doc/index.html"><span> Tomcat8官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/"><span> Spring Boot官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud"><span> Spring Cloud官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.docker.com/get-started/"><span> Docker官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.thymeleaf.org/documentation.html"><span> Thymeleaf官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/"><span> Vue.js中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://reactjs.org/docs/getting-started.html"><span> React.js官方文档</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2021/12/29/HUiyLnJDzF2hKuo.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">是可可呀~|个人博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 优化</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 外链</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fas fa-link"></i><span> 技术友链</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fas fa-folder-open"></i><span> 资源分享</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于本站</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 文档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2"><span> Git中文教程</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.nginx.cn/doc/index.html"><span> Nginx中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/index.html"><span> Mybatis中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="http://nodejs.cn/learn"><span> Nodejs中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.springcloud.cc/spring-reference.html"><span> Spring中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/index.html"><span> Java8官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://maven.apache.org/guides/"><span> Maven官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-8.0-doc/index.html"><span> Tomcat8官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/"><span> Spring Boot官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud"><span> Spring Cloud官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://docs.docker.com/get-started/"><span> Docker官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.thymeleaf.org/documentation.html"><span> Thymeleaf官方文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/"><span> Vue.js中文文档</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://reactjs.org/docs/getting-started.html"><span> React.js官方文档</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="he-plugin-simple"></div><div id="post-info"><h1 class="post-title">Thymeleaf模板引擎<a class="post-edit-link" href="htps://1760317896.github.io_posts/Thymeleaf模板引擎.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-27T04:37:29.000Z" title="发表于 2022-01-27 12:37:29">2022-01-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-13T07:53:28.516Z" title="更新于 2022-06-13 15:53:28">2022-06-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Thymeleaf模板引擎"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2022/01/27/Thymeleaf%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/#post-comment"><span id="twikoo-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>Thymeleaf 是一个服务器端 Java 模板引擎，能够处理 HTML、XML、CSS、JAVASCRIPT 等模板文件。Thymeleaf 模板可以直接当作静态原型来使用，它主要目标是为开发者的开发工作流程带来优雅的自然模板，也是 Java 服务器端 HTML5 开发的理想选择。</p>
+</blockquote>
+<h2 id="1-创建模板文件"><a href="#1-创建模板文件" class="headerlink" title="1. 创建模板文件"></a>1. 创建模板文件</h2><h3 id="创建一个-HTML-模板文件："><a href="#创建一个-HTML-模板文件：" class="headerlink" title="创建一个 HTML 模板文件："></a>创建一个 HTML 模板文件：</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Index Page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=UTF-8&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;message&#125;&quot;</span>&gt;</span>Welcome to BeiJing!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过<html xmlns:th="http://www.thymeleaf.org">引入 Thymeleaf 命名空间。th:text用于处理p标签体的文本内容。该模板文件直接在任何浏览器中正确显示，浏览器会自动忽略它们不能理解的属性th:text。但这不是一个真正有效的 HTML5 文档，因为 HTML5 规范是不允许使用th:*这些非标准属性的。我们可以切换到 Thymeleaf 的data-th-*语法，以此来替换th:*语法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Index Page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=UTF-8&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">data-th-text</span>=<span class="string">&quot;$&#123;message&#125;&quot;</span>&gt;</span>Welcome to BeiJing!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>HTML5 规范是允许data-*这样自定义的属性的。th:*和data-th-*这两个符号是完全等效且可以互换的。但为了简单直观和代码的紧凑性，本文采用th:*的表示形式。</p>
+<h2 id="2-标准表达式语法"><a href="#2-标准表达式语法" class="headerlink" title="2. 标准表达式语法"></a>2. 标准表达式语法</h2><h4 id="Thymeleaf-提供了非常丰富的标准表达式语法，总共有-8-大类："><a href="#Thymeleaf-提供了非常丰富的标准表达式语法，总共有-8-大类：" class="headerlink" title="Thymeleaf 提供了非常丰富的标准表达式语法，总共有 8 大类："></a>Thymeleaf 提供了非常丰富的标准表达式语法，总共有 8 大类：</h4><ul>
+<li>简单表达式</li>
+<li>字面值</li>
+<li>文本操作</li>
+<li>算术运算</li>
+<li>布尔运算</li>
+<li>比较和相等</li>
+<li>条件运算</li>
+<li></li>
+</ul>
+<h3 id="2-1-简单表达式无操作符"><a href="#2-1-简单表达式无操作符" class="headerlink" title="2.1 简单表达式无操作符"></a>2.1 简单表达式无操作符</h3><table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="center">名称</th>
+<th align="center">描述</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">${…}</td>
+<td align="center">Variable Expressions</td>
+<td align="center">变量表达式</td>
+<td align="center">取出上下文变量的值</td>
+</tr>
+<tr>
+<td align="left">*{…}</td>
+<td align="center">Selection Variable Expressions</td>
+<td align="center">选择变量表达式</td>
+<td align="center">取出选择的对象的属性值</td>
+</tr>
+<tr>
+<td align="left">#{…}</td>
+<td align="center">Message Expressions</td>
+<td align="center">消息表达式</td>
+<td align="center">使文字消息国际化，I18N</td>
+</tr>
+<tr>
+<td align="left">@{…}</td>
+<td align="center">Link URL Expressions</td>
+<td align="center">链接表达式</td>
+<td align="center">用于表示各种超链接地址</td>
+</tr>
+<tr>
+<td align="left">~{…}</td>
+<td align="center">Fragment Expressions</td>
+<td align="center">片段表达式</td>
+<td align="center">引用一段公共的代码片段</td>
+</tr>
+</tbody></table>
+<h3 id="2-1-1-…"><a href="#2-1-1-…" class="headerlink" title="2.1.1 ${…}"></a>2.1.1 ${…}</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/standard-expression-syntax/variables&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">variables</span><span class="params">(ModelMap model, HttpSession session)</span> </span>&#123;</span><br><span class="line">    model.put(<span class="string">&quot;now&quot;</span>, <span class="keyword">new</span> Date());</span><br><span class="line">    model.put(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;Welcome to BeiJing!&quot;</span>);</span><br><span class="line">    session.setAttribute(<span class="string">&quot;user&quot;</span>, <span class="keyword">new</span> User(<span class="string">&quot;fanlychie&quot;</span>, <span class="string">&quot;男&quot;</span>, <span class="number">24</span>));</span><br><span class="line">    ... ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过变量表达式${}取出上下文环境中的message变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Welcome to BeiJing! --&gt;</span><br><span class="line">&lt;p th:text=<span class="string">&quot;$&#123;message&#125;&quot;</span>&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>它相当于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.getVariable(<span class="string">&quot;message&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-2-…"><a href="#2-1-2-…" class="headerlink" title="2.1.2 *{…}"></a>2.1.2 *{…}</h3><p>变量表达式${}是面向整个上下文的，而选择变量表达式*{}的上下文是父标签（th:object）所选择的对象：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:object</span>=<span class="string">&quot;$&#123;session.user&#125;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;*&#123;name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;*&#123;sex&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;*&#123;age&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>它相当于：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;session.user.name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;session.user.sex&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;session.user.age&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果对象没有被选择，那么，*{}和${}表达式所达到的效果是完全相同的：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;*&#123;session.user.name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;session.user.name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-1-3-…"><a href="#2-1-3-…" class="headerlink" title="2.1.3 #{…}"></a>2.1.3 #{…}</h3><p>消息表达式可用于国际化文字信息。首先我们来了解一下 i18n 资源文件的命名规则：</p>
+<ul>
+<li>basename.properties</li>
+<li>basename_language.properties</li>
+<li>basename_language_country.properties<br>basename是自定义的资源文件名称，language和country必须是 Java 支持的语言和国家。basename.properties是缺省加载的资源文件，当客户端根据本地语言查找不到相关的资源文件时，则使用该配置文件。</li>
+</ul>
+<p>创建文件src/main/resources/messages.properties<br>welcome.message = 北京欢迎你！<br>创建文件src/main/resources/messages_en_US.properties<br>welcome.message = Welcome to BeiJing!<br>在 IntelliJ IDEA 编辑视图：<br>messages是 Spring Boot 加载资源文件默认采用的名称（basename），如果你所使用的资源文件名称不是以messages命名或所使用的资源文件不是在src/main/resources根目录，你可以通过spring.messages.basename属性来做具体的配置。如，资源文件messages.properties和messages_en_US.properties假设它们所在的目录位置是src/main/resources/i18n。<br>application.properties 配置示例：<br>spring.messages.basename:i18n/messages<br>application.yml 配置示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring</span><br><span class="line">  messages</span><br><span class="line">    basename: i18n/messages</span><br></pre></td></tr></table></figure>
+<p>静态文本消息示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 北京欢迎你！ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;#&#123;welcom.message&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>消息表达式#{}是不允许直接处理非静态的文本消息的，但是你可以在资源文件中通过使用占位符{}来处理非静态的文本消息：<br>messages.properties 配置示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">welcome.user.message = &#123;0&#125;, 北京欢迎你！</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-4-…"><a href="#2-1-4-…" class="headerlink" title="2.1.4 @{…}"></a>2.1.4 @{…}</h3><p>链接表达式@{}是专门用来处理 URL 链接地址的。</p>
+<ul>
+<li>绝对地址示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://fanlychie.github.io --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;@&#123;https://fanlychie.github.io&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>页面相对地址示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- commons/base.html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;@&#123;commons/base.html&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>上下文相对地址（相对于当前的服务）示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- /css/mian.css --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;@&#123;/css/mian.css&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>服务器相对地址（相对于部署在同一个服务器中的不同服务）示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- /image/upload --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;@&#123;~/image/upload&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>参数使用示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- /css/mian.css?v=1.0 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;@&#123;/css/mian.css(v=1.0)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /user/order?username=fanlychie --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;@&#123;/user/order(username=$&#123;session.user.name&#125;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /user/order?username=fanlychie&amp;status=PAIED --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;@&#123;/user/order(username=$&#123;session.user.name&#125;,status=&#x27;PAIED&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /user/fanlychie/info --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;@&#123;/user/&#123;username&#125;/info(username=$&#123;session.user.name&#125;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-1-5-…"><a href="#2-1-5-…" class="headerlink" title="2.1.5 ~{…}"></a>2.1.5 ~{…}</h3>片段表达式~{}可以用来引用一段公共的 HTML 代码片段。<table>
+<thead>
+<tr>
+<th align="left">语法</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">~{templatename}</td>
+<td align="center">引用整个模板文件的代码片段</td>
+</tr>
+<tr>
+<td align="left">~{templatename :: selector}</td>
+<td align="center">selector 可以是 th:fragment 指定的名称或其他选择器。</td>
+</tr>
+<tr>
+<td align="left">如类选择器、ID选择器等</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">~{::selector}</td>
+<td align="center">相当于 ~{this :: selector}，表示引用当前模板定义的代码片段</td>
+</tr>
+<tr>
+<td align="left">在 Thymeleaf 模板文件中，你可以使用th:fragment属性来定义一段公共的代码片段，然后你可以通过使用th:insert、th:replace、th:include（Thymeleaf 3.0 开始不再推荐使用，本文也将不再介绍它）属性来将这些公共的代码片段引入到模板文件中来。</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>src/main/resources/templates/base.html，通过th:fragment属性定义一段公共的代码片段：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;footer&quot;</span> <span class="attr">th:fragment</span>=<span class="string">&quot;footerFragment&quot;</span>&gt;</span><span class="symbol">&amp;copy;</span> 2017 fanlychie<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>src/main/resources/templates/index.html，通过th:insert属性引用一段公共的代码片段：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;~&#123;base :: footerFragment&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中，~{}是可选的，我们可以去掉这层的包裹：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;base :: footerFragment&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>若 index.html 与 base.html 不在同级目录，如 templates/commons/base.html：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;~&#123;commons/base :: footerFragment&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用th:fragment属性定义代码片段时，你还可以声明一组参数：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:fragment</span>=<span class="string">&quot;crumbs(parent, child)&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;parent&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;<span class="name">i</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;child&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&lt;i&gt;用户中心&lt;/i&gt;</span></span><br><span class="line"><span class="comment">&lt;i&gt;我的订单&lt;/i&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;::crumbs(&#x27;用户中心&#x27;, &#x27;我的订单&#x27;)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>此外，我们还可以通过类选择器、ID选择器等来引用公共的代码片段：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;~&#123;base :: #footer&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>除了th:insert属性th:replace也可以用来引用公共的代码片段。不同的是，th:insert是直接将代码片段插入到标签体内，而th:replace则是用代码片段直接替换标签体内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&lt;div&gt;</span></span><br><span class="line"><span class="comment">    &lt;div id=&quot;footer&quot;&gt;© 2017 fanlychie&lt;/div&gt;</span></span><br><span class="line"><span class="comment">&lt;/div&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;~&#123;base :: footerFragment&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&lt;div id=&quot;footer&quot;&gt;© 2017 fanlychie&lt;/div&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:replace</span>=<span class="string">&quot;~&#123;base :: footerFragment&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-6-内置对象"><a href="#2-1-6-内置对象" class="headerlink" title="2.1.6 内置对象"></a>2.1.6 内置对象</h3><table>
+<thead>
+<tr>
+<th align="left">对象</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">#ctx</td>
+<td align="center">上下文对象</td>
+</tr>
+<tr>
+<td align="left">#vars</td>
+<td align="center">同 #ctx，表示上下文变量</td>
+</tr>
+<tr>
+<td align="left">#locale</td>
+<td align="center">上下文本地化（特定的地理区域）变量，可参考 java.util.Locale</td>
+</tr>
+<tr>
+<td align="left">#request</td>
+<td align="center">HttpServletRequest 对象，可参考 javax.servlet.http.HttpServletRequest</td>
+</tr>
+<tr>
+<td align="left">#response</td>
+<td align="center">HttpServletResponse 对象，可参考 javax.servlet.http.HttpServletResponse</td>
+</tr>
+<tr>
+<td align="left">#session</td>
+<td align="center">HttpSession 对象，可参考 javax.servlet.http.HttpSession</td>
+</tr>
+<tr>
+<td align="left">#servletContext</td>
+<td align="center">ervletContext 对象，可参考 javax.servlet.ServletContext</td>
+</tr>
+</tbody></table>
+<ul>
+<li>#ctx示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- zh_CN --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#ctx.getLocale()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Welcome to BeiJing! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#ctx.getVariable(&#x27;message&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- true --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#ctx.containsVariable(&#x27;message&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>#vars示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- zh_CN --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#vars.getLocale()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Welcome to BeiJing! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#vars.getVariable(&#x27;message&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- true --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#vars.containsVariable(&#x27;message&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>#locale示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- zh_CN --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#locale&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- CN --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#locale.country&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 中国 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#locale.displayCountry&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- zh --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#locale.language&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 中文 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#locale.displayLanguage&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 中文 (中国) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#locale.displayName&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>#request示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTTP/1.1 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.protocol&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- http --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.scheme&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- localhost --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.serverName&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 8080 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.serverPort&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- GET --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.method&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /standard-expression-syntax/variables --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.requestURI&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- http://localhost:8080/standard-expression-syntax/variables --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.requestURL&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- /standard-expression-syntax/variables --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.servletPath&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- java.util.Collections$3@203646fe --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.parameterNames&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &#123;q=[Ljava.lang.String;@3308c69f&#125; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.parameterMap&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- q=expression --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#request.queryString&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+注意，请求地址的 URL 参数直接通过#request.x是取不出来的，需要使用param.x语法来取出。如，URL：/standard-expression-syntax/variables?q=expression，取出 q 参数的正确姿势：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;param.q&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>#response示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 200 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#response.status&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 8192 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#response.bufferSize&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- UTF-8 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#response.characterEncoding&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- text/html;charset=UTF-8 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#response.contentType&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>#session示例：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 2BCB2A0EACFF2D9D249D9799431B5127 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#session.id&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 1499786693244 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#session.lastAccessedTime&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- fanlychie --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#session.getAttribute(&#x27;user&#x27;).name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+注意，放到会话里面的对象直接通过#session.x是取不出来的，需要使用session.x语法来取出。如，取出会话里面的 user 对象的正确姿势：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;session.user.name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-1-7-工具类"><a href="#2-1-7-工具类" class="headerlink" title="2.1.7 工具类"></a>2.1.7 工具类</h3><table>
+<thead>
+<tr>
+<th align="left">对象</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">#messages</td>
+<td align="center">消息工具类，与 ＃{…} 作用相同</td>
+</tr>
+<tr>
+<td align="left">对象</td>
+<td align="center">描述</td>
+</tr>
+<tr>
+<td align="left">#uris</td>
+<td align="center">地址相关的工具类</td>
+</tr>
+<tr>
+<td align="left">#messages</td>
+<td align="center">消息工具类，与 ＃{…} 作用相同</td>
+</tr>
+<tr>
+<td align="left">#conversions</td>
+<td align="center">对象转换工具类</td>
+</tr>
+<tr>
+<td align="left">#dates</td>
+<td align="center">日期时间工具类</td>
+</tr>
+<tr>
+<td align="left">#messages</td>
+<td align="center">消息工具类，与 ＃{…} 作用相同</td>
+</tr>
+<tr>
+<td align="left">#calendars</td>
+<td align="center">日历工具类</td>
+</tr>
+<tr>
+<td align="left">#numbers</td>
+<td align="center">数字工具类</td>
+</tr>
+<tr>
+<td align="left">#strings</td>
+<td align="center">字符串工具类</td>
+</tr>
+<tr>
+<td align="left">#objects</td>
+<td align="center">对象工具类</td>
+</tr>
+<tr>
+<td align="left">#bools</td>
+<td align="center">布尔工具类</td>
+</tr>
+<tr>
+<td align="left">#arrays</td>
+<td align="center">数组工具类</td>
+</tr>
+<tr>
+<td align="left">#lists</td>
+<td align="center">List 工具类</td>
+</tr>
+<tr>
+<td align="left">#sets</td>
+<td align="center">Set 工具类</td>
+</tr>
+<tr>
+<td align="left">#maps</td>
+<td align="center">Map 工具类</td>
+</tr>
+</tbody></table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- false --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#strings.isEmpty(message)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 2017-07-12 00:37:25 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;#dates.format(now, &#x27;yyyy-MM-dd HH:mm:ss&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-2-字面值"><a href="#2-2-字面值" class="headerlink" title="2.2 字面值"></a>2.2 字面值</h2><p>所谓字面值，首先它不是一个变量，它是一个具体的确切的值，通常这些值是比较简单的，例如：18、’welcome’等，它们没有名称，以至于我们只能用值来称呼它们，因此我们称其为字面值。</p>
+<h3 id="2-2-1-文字字面值"><a href="#2-2-1-文字字面值" class="headerlink" title="2.2.1 文字字面值"></a>2.2.1 文字字面值</h3><p>文字字面值是用单引号引起来的任何字符内容，如果字符内容里面含有单引号，则需要进行转义：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Welcome to BeiJing! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;&#x27;Welcome to BeiJing!&#x27;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &#x27;Welcome to BeiJing!&#x27; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;&#x27;\&#x27;Welcome to BeiJing!\&#x27;&#x27;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-2-数字字面值"><a href="#2-2-2-数字字面值" class="headerlink" title="2.2.2 数字字面值"></a>2.2.2 数字字面值</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 2017 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;2017&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 2018 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;2017 + 1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-3-布尔字面值"><a href="#2-2-3-布尔字面值" class="headerlink" title="2.2.3 布尔字面值"></a>2.2.3 布尔字面值</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- false --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;1 &gt; 2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 否 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;1 &gt; 2 ? &#x27;是&#x27; : &#x27;否&#x27;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-4-空字面值"><a href="#2-2-4-空字面值" class="headerlink" title="2.2.4 空字面值"></a>2.2.4 空字面值</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- false --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user == null&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-5-字面令牌"><a href="#2-2-5-字面令牌" class="headerlink" title="2.2.5 字面令牌"></a>2.2.5 字面令牌</h3><p>字面令牌（Literal Tokens）的内容只能含有（不能含有空格、特殊符号等）：</p>
+<ul>
+<li>大写或小写的字母、中文等不含空格和特殊符号的文本</li>
+<li>0 到 9 的数字</li>
+<li>中括号</li>
+<li>下划线</li>
+<li>连字符（-）</li>
+<li>点符号（.）</li>
+</ul>
+<p>实际上，数字、布尔和空字面值都是字面令牌的特殊情况。字面令牌能够用来对标准表达式语法进行简化，我们可以将包裹它的内容的单引号去掉：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;Welcome to BeiJing!&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>它等效于：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;&#x27;Welcome to BeiJing!&#x27;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-使用文本"><a href="#3-使用文本" class="headerlink" title="3. 使用文本"></a>3. 使用文本</h2><p>首先介绍两个最基础的<code>th:*</code>属<code>th:text</code>和<code>th:utext</code>，它们都是用于处理文本消息内容。</p>
+<h3 id="3-1-th-text"><a href="#3-1-th-text" class="headerlink" title="3.1 th:text"></a>3.1 th:text</h3><p>在标签体中展示表达式评估结果的文本内容：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;message&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用外部化的文本内容：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;message&#125;&quot;</span>&gt;</span>Welcome to BeiJing!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当它作为静态文件直接运行时，浏览器会自动忽略它不能识别的<code>th:text</code>属性，而显示<p>标签体的文本内容<code>Welcome to BeiJing!</code></p>
+<p>当它作为模板文件运行在服务器端时，<code>th:text</code>属性的具体值将会替换<p>标签体的文本内容。</p>
+<h3 id="3-2-th-utext"><a href="#3-2-th-utext" class="headerlink" title="3.2 th:utext"></a>3.2 th:utext</h3><p>属性<code>th:utext</code>与<code>th:text</code>的区别在于：</p>
+<ul>
+<li><code>th:text</code>默认会对含有 HTML 标签的内容进行字符转义；</li>
+<li><code>th:utext</code>（Unescaped Text）则不会对含有 HTML 标签的内容进行字符转义；</li>
+</ul>
+<p>假设：message = “<b>Welcome to BeiJing!</b>“。</p>
+<ul>
+<li>使用th:text属性：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;message&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<code>th:text</code>效果：<b>Welcome to BeiJing!</b></li>
+<li>使用th:utext属性：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:utext</span>=<span class="string">&quot;$&#123;message&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<code>th:utext</code>效果：Welcome to BeiJing!</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">桥豆麻袋</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://1760317896.github.io/2022/01/27/Thymeleaf%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/">http://1760317896.github.io/2022/01/27/Thymeleaf模板引擎/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://1760317896.github.io" target="_blank">是可可呀~|个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2021/12/23/oU4FeXjCplusZa2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> reward</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s2.loli.net/2021/12/26/LPdHnvUkeiKZhMs.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2021/12/26/LPdHnvUkeiKZhMs.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s2.loli.net/2021/12/26/lOvjLq7Ed9FHRw4.jpg" target="_blank"><img class="post-qr-code-img" src="https://s2.loli.net/2021/12/26/lOvjLq7Ed9FHRw4.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/17/Redis%E7%BC%93%E5%AD%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"><img class="prev-cover" src="https://s2.loli.net/2022/01/23/SxDVC4Jvp5gm6An.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Redis缓存解决方案</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/23/%E5%AD%A6%E4%B9%A0Redis%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="https://s2.loli.net/2022/01/23/SxDVC4Jvp5gm6An.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Redis基础</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">桥豆麻袋</div><div class="author-info__description">You have to put a grape in your mouth to call it sour</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1760317896/YeBlog"><i class="fab fa-github"></i><span>To GitHub(网站开源)</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">一路走，一路学。面朝大海，望眼欲穿。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">1. 创建模板文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-HTML-%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">创建一个 HTML 模板文件：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A0%87%E5%87%86%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2. 标准表达式语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Thymeleaf-%E6%8F%90%E4%BE%9B%E4%BA%86%E9%9D%9E%E5%B8%B8%E4%B8%B0%E5%AF%8C%E7%9A%84%E6%A0%87%E5%87%86%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95%EF%BC%8C%E6%80%BB%E5%85%B1%E6%9C%89-8-%E5%A4%A7%E7%B1%BB%EF%BC%9A"><span class="toc-number">2.0.1.</span> <span class="toc-text">Thymeleaf 提供了非常丰富的标准表达式语法，总共有 8 大类：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%AE%80%E5%8D%95%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%97%A0%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 简单表达式无操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E2%80%A6"><span class="toc-number">2.2.</span> <span class="toc-text">2.1.1 ${…}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-%E2%80%A6"><span class="toc-number">2.3.</span> <span class="toc-text">2.1.2 *{…}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-%E2%80%A6"><span class="toc-number">2.4.</span> <span class="toc-text">2.1.3 #{…}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-4-%E2%80%A6"><span class="toc-number">2.5.</span> <span class="toc-text">2.1.4 @{…}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-5-%E2%80%A6"><span class="toc-number">2.6.</span> <span class="toc-text">2.1.5 ~{…}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-6-%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.7.</span> <span class="toc-text">2.1.6 内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-7-%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-number">2.8.</span> <span class="toc-text">2.1.7 工具类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-number">3.</span> <span class="toc-text">2.2 字面值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E6%96%87%E5%AD%97%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-number">3.1.</span> <span class="toc-text">2.2.1 文字字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E6%95%B0%E5%AD%97%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-number">3.2.</span> <span class="toc-text">2.2.2 数字字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-%E5%B8%83%E5%B0%94%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-number">3.3.</span> <span class="toc-text">2.2.3 布尔字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-%E7%A9%BA%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-number">3.4.</span> <span class="toc-text">2.2.4 空字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-5-%E5%AD%97%E9%9D%A2%E4%BB%A4%E7%89%8C"><span class="toc-number">3.5.</span> <span class="toc-text">2.2.5 字面令牌</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E6%96%87%E6%9C%AC"><span class="toc-number">4.</span> <span class="toc-text">3. 使用文本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-th-text"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 th:text</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-th-utext"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 th:utext</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2021/12/29/HUiyLnJDzF2hKuo.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2029 - 2022 By 桥豆麻袋</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'twikoo-0gxault3cb1198ad',
+      region: ''
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'twikoo-0gxault3cb1198ad',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'twikoo-0gxault3cb1198ad',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="5011504991" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="list" data-preload="none" data-autoplay="true" muted></div><script src="/js/VolantisTags.js"></script><script src="/js/lun.js"></script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script async src="/js/weather.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="//code.tidio.co/hgk1vot3vbzasaecdzckgcanjhcm0xu9.js" async="async"></script><script>function onTidioChatApiReady() {
+  window.tidioChatApi.hide();
+  window.tidioChatApi.on("close", function() {
+    window.tidioChatApi.hide();
+  });
+}
+if (window.tidioChatApi) {
+  window.tidioChatApi.on("ready", onTidioChatApiReady);
+} else {
+  document.addEventListener("tidioChat-ready", onTidioChatApiReady);
+}
+
+var chatBtnFn = () => {
+  document.getElementById("chat_btn").addEventListener("click", function(){
+    window.tidioChatApi.show();
+    window.tidioChatApi.open();
+  });
+}
+chatBtnFn()
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
